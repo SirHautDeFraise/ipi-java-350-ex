@@ -7,8 +7,6 @@ Exercices de Java, module 350 pour l'IPI. Il est nécessaire de forker ce reposi
 - Installer IntelliJ Ultimate en utilisant votre adresse IPI sur Jetbrains Student https://www.jetbrains.com/student/
 ou un autre IDE si vous avez l'habitude (Eclipse)
 - Si vous n'êtes pas familié avec Git, je vous recommande ce site : https://learngitbranching.js.org/ (faire au moins la première leçon du niveau 1)
-Via Microsoft Imagine, activer votre crédit étudiant Azure https://imagine.microsoft.com/fr-fr (ou via le mail reçu en début d'année, onthehub https://onthehub.com/)
-- S'inscrire également au programme AWS Educate toujours avec votre adresse IPI (https://aws.amazon.com/fr/education/awseducate/).
 
 ## Introduction
 
@@ -23,27 +21,36 @@ Répondre de nouveau aux questions. Qu'est-ce qui a changé ?
 
 ## Intégration continue
 
-   - Rajouter la configuration nécessaire pour Travis dans le projet.
-   - Vous connecter à Travis https://travis-ci.org avec votre compte Github.
-   - Configurer le projet et vérifier que le premier build se passe correctement. Après chaque exercice, vérifier que le build passe toujours...
+   1.	Sur votre repository Github, aller sur l'onglet **Actions**
+   2.	Chercher dans les actions suggérées ou via la barre de recherche l'action **Java with Maven** et cliquer sur le bouton **Configure**
+   3.	Analyser la configuration proposée et faites-y des modifications si nécessaires
+   4.	Cliquer ensuite sur le bouton **Start Commit**
+   5.	Constater l'ajout du workflow dans l'onglet **Actions** et regarder le statut du build
+   6. Après chaque exercice, vérifier que le build passe toujours...
  
 ## Evaluation de la qualité
 
-   - Connectez-vous à SonarQube https://about.sonarcloud.io/ avec votre compte Github
-   - Ajouter votre projet dans Sonar
-   - Modifier votre configuration Travis pour lancer une analyse après chaque build
-   - Vérifier que tout est ok
-   - Analyser le premier rapport de Sonar
+   1.	Aller sur https://sonarcloud.io/
+   2.	Se connecter en liant son compte Github 
+   3.	Cliquer sur `New project`.
+   4.	Sélectionner le repository correspondant
+   5.	Cliquer sur `Analyse new project`
+   6.	Cliquer `Create a project manually`
+   7.	Créer le token puis le récupérer en le copiant
+   8.	Suivre la procédure recommandée pour paramétrer l'analyse avec les actions Github
+   9.	Modifier le workflow de build pour y ajouter l'analyse du code par Sonar
+   10. Analyser le premier rapport de Sonar
+
 
 ## Tests unitaires
 
 ### Tests unitaires classiques
 
-Créer la classe permettant de tester la méthode `getNombreAnneeAnciennete` et mettre en place les tests unitaires nécessaires pour tester le plus exhaustivement possible cette méthode. Bien penser à tous les cas possibles, notamment les cas aux limites. Ne pas hésiter à corriger le code de la méthode initiale si besoin.
+Créer la classe permettant de tester la méthode `getNombreAnneeAnciennete` de la classe `Employe` et mettre en place les tests unitaires nécessaires pour tester le plus exhaustivement possible cette méthode. Bien penser à tous les cas possibles, notamment les cas aux limites. Ne pas hésiter à corriger le code de la méthode initiale si besoin.
 
 ### Tests paramétrés
 
-Créer une méthode de test paramétré permettant de tester le plus exhaustivement possible la méthode `getPrimeAnnuelle` et corriger les éventuels problème de cette méthode.
+Créer une méthode de test paramétré permettant de tester le plus exhaustivement possible la méthode `getPrimeAnnuelle` de la classe `Employe` et corriger les éventuels problème de cette méthode.
 
 ### Tests mockés
 
@@ -57,11 +64,15 @@ Créer la classe de test et les méthodes permettant de tester la méthode `find
 
 ### Tests de service intégrés
 
-Tester de façon intégrée un cas nominal de la méthode `embaucheEmploye`.
+Tester de façon intégrée un cas nominal de la méthode `embaucheEmploye` de la classe `EmployeService`.
 
 ## Tests d'acceptation
 
-TODO
+- Installer Gauge depuis https://gauge.org/. La méthode d'installation recommandée est via npm. Il faut donc installer NodeJS. D'autres méthodes sont possibles cependant. 
+- Ajouter le chemin de l'exécutable Gauge dans la variable d'environnement PATH. Vous pouvez utiliser la commande `where gauge` dans une invite de commande Windows, ou `which gauge` dans un terminal Linux.
+- À l'aide d'un terminal, vous positionner à la racine de votre projet Java et initialiser (à l'aide de la documentation) un nouveau projet Gauge Java. Déplacer le dossier `specs` dans le dossier `src/test/resources`.
+- Un projet d'exemple de Gauge avec Spring se trouve à cette adresse : https://github.com/getgauge-examples/ioc-spring
+- Récupérer les classes `RegisterIOC` et `SpringGaugeTestApp` et les intégrer dans votre projet. Vous inspirer de la classe `PaymentService` pour ajouter les Step nécessaires pour écrirer un test d'acceptation validant la fonctionnalité d'embauche d'un employé.
 
 ## Maintenabilité
 
