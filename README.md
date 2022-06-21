@@ -6,6 +6,7 @@ Exercices de Java, module 350 pour l'IPI. Il est nécessaire de forker ce reposi
 
 - Installer IntelliJ Ultimate en utilisant votre adresse IPI sur Jetbrains Student https://www.jetbrains.com/student/
 ou un autre IDE si vous avez l'habitude (Eclipse)
+- Si vous n'êtes pas familié avec Git, je vous recommande ce site : https://learngitbranching.js.org/ (faire au moins la première leçon du niveau 1)
 
 ## Introduction
 
@@ -20,18 +21,26 @@ Répondre de nouveau aux questions. Qu'est-ce qui a changé ?
 
 ## Intégration continue
 
-   - Rajouter la configuration nécessaire pour Travis dans le projet.
-   - Vous connecter à Travis https://travis-ci.org avec votre compte Github.
-   - Documentation : https://docs.travis-ci.com/user/languages/java/
-   - Configurer le projet et vérifier que le premier build se passe correctement. Après chaque exercice, vérifier que le build passe toujours...
+   1.	Sur votre repository Github, aller sur l'onglet **Actions**
+   2.	Chercher dans les actions suggérées ou via la barre de recherche l'action **Java with Maven** et cliquer sur le bouton **Configure**
+   3.	Analyser la configuration proposée et faites-y des modifications si nécessaires
+   4.	Cliquer ensuite sur le bouton **Start Commit**
+   5.	Constater l'ajout du workflow dans l'onglet **Actions** et regarder le statut du build
+   6. Après chaque exercice, vérifier que le build passe toujours...
  
 ## Evaluation de la qualité
 
-   - Connectez-vous à SonarCloud https://sonarcloud.io/ avec votre compte Github
-   - Ajouter votre projet dans Sonar
-   - Modifier votre configuration Travis pour lancer une analyse après chaque build
-   - Vérifier que tout est ok
-   - Analyser le premier rapport de Sonar
+   1.	Aller sur https://sonarcloud.io/
+   2.	Se connecter en liant son compte Github 
+   3.	Cliquer sur `New project`.
+   4.	Sélectionner le repository correspondant
+   5.	Cliquer sur `Analyse new project`
+   6.	Cliquer `Create a project manually`
+   7.	Créer le token puis le récupérer en le copiant
+   8.	Suivre la procédure recommandée pour paramétrer l'analyse avec les actions Github
+   9.	Modifier le workflow de build pour y ajouter l'analyse du code par Sonar
+   10. Analyser le premier rapport de Sonar
+
 
 ## Tests unitaires
 
@@ -63,9 +72,11 @@ Démonstration avec Gauge
 
 ## Maintenabilité
 
-- S'assurer de la lisibilité du code et du respect des conventions.
-- Ajouter des `logger` aux endroits stratégiques du code en utilisant le bon niveau de log. Rediriger toutes les logs d'erreur dans un fichier `error.log` et tous vos logs dans un fichier `logs.log`. Ajouter la configuration de rotation tous les jours et faire en sorte que les fichiers ne puissent dépasser 10Mo.
-- Vérifier et le cas échéant compléter la documentation du code, générer la JavaDoc avec maven.
+- S'assurer de la lisibilité du code et du respect des conventions
+- Ajouter des `logger` aux endroits stratégiques du code en utilisant le bon niveau de log.
+- Vérifier et le cas échéant compléter la documentation du code, générer la JavaDoc.
+- Ajouter à votre Github une documentation statique avec Jekyll
+- Ajouter des badges contenant les métriques principales de votre projet en haut de ce README
 
 # Evaluation
 
@@ -74,24 +85,18 @@ Commencer par faire une branche `evaluation` à partir de votre branche `master`
 ## Tests unitaires et TDD
 
 - Tester de manière unitaire le plus exhaustivement possible la méthode `augmenterSalaire` d'`Employe` en essayant de faire du TDD. Décommenter la méthode dans `Employe` et écrire d'abord les tests entièrement (en réflechissant particulièrement aux cas limites) avant d'écrire la méthode. Pensez-vous que vous auriez écrit la méthode directement comme cela si vous n'aviez pas écrit les tests en premier ?
-- FACULTATIF : Tester unitairement (en utilisant les tests paramétrés) la méthode `getNbRtt` d'`Employe`. Le nombre de RTT se calcule à partir de la formule suivante : **Nombre de jours dans l'année - Nombre de jours travaillés dans l'année en plein temps - Nombre de samedi et dimanche dans l'année - Nombre de jours fériés ne tombant pas le week-end - Nombre de congés payés**. Le tout au pro-rata du taux d'activité du salarié. **Attention**, des erreurs sont présentes dans cette méthode. Faites donc vos calculs avant et débugguer votre code pour trouver les erreurs. Aidez-vous de Sonar... Rendre cette méthode plus propre, documentée et lisible.
-Infos : 
-  - 2019 : l'année est non bissextile, a débuté un mardi et il y a 10 jours fériés ne tombant pas le week-end.
-  - 2021 : l'année est non bissextile, a débuté un vendredi et il y a 7 jours fériés ne tombant pas le week-end.
-  - 2022 : l'année est non bissextile, a débuté un samedi et il y a 7 jours fériés ne tombant pas le week-end.
-  - 2032 : l'année est bissextile, a débuté un jeudi et il y a 7 jours fériés ne tombant pas le week-end.
-
-- Tester sans dépendance à la BDD la méthode `calculPerformanceCommercial` d'`EmployeService`
+- Tester unitairement (en utilisant les tests paramétrés) la méthode `getNbRtt` d'`Employe` et corriger les éventuelles erreurs de cette méthode. Rendre cette méthode plus propre, documentée et lisible.
 
 ## Tests d'intégration
 
-- Tester de manière intégrée une cas nominal de la méthode précédente
+- Tester sans dépendance à la BDD la méthode `calculPerformanceCommercial` d'`EmployeService`
+- Tester de manière intégrée un cas nominal de la méthode précédente
 - Tester de manière intégrée la méthode d'`EmployeRepository` `avgPerformanceWhereMatriculeStartsWith`
 
 ## Autres
 
 - S'assurer que votre code passe et qu'il n'y a aucun *code smells* ou *anomalies* ou *bugs* bloquants, critiques ou majeurs. Si c'est le cas, corriger le code fourni.
-- S'assurer d'avoir 100% de couverture de code sur les méthodes testés dans l'évaluation. Vérifier la couverture de code avec mutation et à défaut d'atteindre 100%, essayer d'obtenir un bon niveau.
+- S'assurer d'avoir 100% de couverture de code sur les méthodes testés dans l'évaluation
 
 ## Revue de code
 
