@@ -1,4 +1,4 @@
-# TP sur la qualité logicielle
+# TP sur la qualité logicielle PJVILLOUD
 
 Exercices de Java, module 350 pour l'IPI. Il est nécessaire de forker ce repository pour pouvoir faire tout le TP !! Après chaque question, pusher vos modifications sur votre repository.
 
@@ -68,11 +68,7 @@ Tester de façon intégrée un cas nominal de la méthode `embaucheEmploye` de l
 
 ## Tests d'acceptation
 
-- Installer Gauge depuis https://gauge.org/. La méthode d'installation recommandée est via npm. Il faut donc installer NodeJS. D'autres méthodes sont possibles cependant. 
-- Ajouter le chemin de l'exécutable Gauge dans la variable d'environnement PATH. Vous pouvez utiliser la commande `where gauge` dans une invite de commande Windows, ou `which gauge` dans un terminal Linux.
-- À l'aide d'un terminal, vous positionner à la racine de votre projet Java et initialiser (à l'aide de la documentation) un nouveau projet Gauge Java. Déplacer le dossier `specs` dans le dossier `src/test/resources`.
-- Un projet d'exemple de Gauge avec Spring se trouve à cette adresse : https://github.com/getgauge-examples/ioc-spring
-- Récupérer les classes `RegisterIOC` et `SpringGaugeTestApp` et les intégrer dans votre projet. Vous inspirer de la classe `PaymentService` pour ajouter les Step nécessaires pour écrirer un test d'acceptation validant la fonctionnalité d'embauche d'un employé.
+Démonstration avec Gauge
 
 ## Maintenabilité
 
